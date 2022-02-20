@@ -36,6 +36,7 @@ class SajdaView extends StatelessWidget {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         // appBar: AppBar(title: Text(surahName)),
+
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

@@ -28,46 +28,60 @@ class _QiblahCompassState extends State<QiblahCompass> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(8.0),
-      child: StreamBuilder(
-        stream: stream,
-        builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return LoadingIndicator();
-          if (snapshot.data.enabled == true) {
-            switch (snapshot.data.status) {
-              case LocationPermission.always:
-              case LocationPermission.whileInUse:
-                return QiblahCompassWidget();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Qibla Finder"),
+        backgroundColor: Color.fromRGBO(143, 148, 251, 1),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[Color.fromRGBO(143, 148, 251, 1),Color.fromRGBO(143, 148, 251, .6)]),
+          ),
+        ),
+      ),
+      body: Container(
+        color: Color.fromRGBO(143, 148, 251, .6),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(8.0),
+        child: StreamBuilder(
+          stream: stream,
+          builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return LoadingIndicator();
+            if (snapshot.data.enabled == true) {
+              switch (snapshot.data.status) {
+                case LocationPermission.always:
+                case LocationPermission.whileInUse:
+                  return QiblahCompassWidget();
 
-              case LocationPermission.denied:
-                return LocationErrorWidget(
-                  error: "Location service permission denied",
-                  callback: _checkLocationStatus,
-                );
-              case LocationPermission.deniedForever:
-                return LocationErrorWidget(
-                  error: "Location service Denied Forever !",
-                  callback: _checkLocationStatus,
-                );
-            // case GeolocationStatus.unknown:
-            //   return LocationErrorWidget(
-            //     error: "Unknown Location service error",
-            //     callback: _checkLocationStatus,
-            //   );
-              default:
-                return Container();
+                case LocationPermission.denied:
+                  return LocationErrorWidget(
+                    error: "Location service permission denied",
+                    callback: _checkLocationStatus,
+                  );
+                case LocationPermission.deniedForever:
+                  return LocationErrorWidget(
+                    error: "Location service Denied Forever !",
+                    callback: _checkLocationStatus,
+                  );
+              // case GeolocationStatus.unknown:
+              //   return LocationErrorWidget(
+              //     error: "Unknown Location service error",
+              //     callback: _checkLocationStatus,
+              //   );
+                default:
+                  return Container();
+              }
+            } else {
+              return LocationErrorWidget(
+                error: "Please enable Location service",
+                callback: _checkLocationStatus,
+              );
             }
-          } else {
-            return LocationErrorWidget(
-              error: "Please enable Location service",
-              callback: _checkLocationStatus,
-            );
-          }
-        },
+          },
+        ),
       ),
     );
   }

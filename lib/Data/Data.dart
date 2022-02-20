@@ -1,3 +1,4 @@
+
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -105,41 +106,7 @@ class Data {
 
     }
   }
-  // getSajdaList() async {
-  //   if (HomeList.sajdaList == null) {
-  //     sajdaList = await Data.getSajda();
-  //     HomeList.sajdaList = sajdaList;
-  //     update();
-  //   } else {
-  //     sajdaList = HomeList.sajdaList;
-  //     // print(sajdaList.surahs.length);
-  //     update();
-  //
-  //   }
-  // }
- //
- // static Future getSajdaList() async {
- //    if (Utils.sajdaList == null) {
- //      sajdaList = await getSajda();
- //      Utils.sajdaList = sajdaList;
- //    //  update();
- //    } else {
- //      sajdaList = Utils.sajdaList;
- //      // print(sajdaList.surahs.length);
- //      //update();
- //
- //    }
- //  }
- //  static Future <SajdaList> getSajda() async {
- //    String url = "https://api.alquran.cloud/v1/sajda/quran-uthmani";
- //    final response = await Dio().get(url);
- //
- //    if (response.statusCode == 200) {
- //      return SajdaList.fromJSON(response.data);
- //    } else {
- //      print("Failed to load");
- //      throw Exception("Failed  to Load Post");
- //    }
- //  }
+
+
 
 }

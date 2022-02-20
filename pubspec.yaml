@@ -34,7 +34,7 @@ dependencies:
   curved_navigation_bar: ^1.0.1
   firebase_auth: ^3.1.4
   firebase_core: ^1.8.0
-  cloud_firestore: ^2.5.4
+  cloud_firestore:
   firebase_storage: ^10.0.6
   firebase_database: ^8.0.1
   fluttertoast: ^8.0.8
@@ -55,6 +55,7 @@ dependencies:
   shimmer: ^2.0.0
   shared_preferences: ^2.0.6
   get: ^4.1.4
+  advance_pdf_viewer:
 
 
 

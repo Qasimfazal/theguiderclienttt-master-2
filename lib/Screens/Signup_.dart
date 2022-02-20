@@ -255,7 +255,8 @@ class _SignupState extends State<Signup> {
                                   gradient: LinearGradient(colors: [
                                     Color.fromRGBO(143, 148, 251, 1),
                                     Color.fromRGBO(143, 148, 251, .6),
-                                  ])),
+                                  ])
+                              ),
                               child: Center(
                                 child: Text(
                                   "Signup",
